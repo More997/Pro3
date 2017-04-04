@@ -28,3 +28,9 @@ C:\Users\51\Documents\GitHub\Pro3\videojuego\obj\Debug\videojuego.pdb
 C:\Users\51\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.exe
 C:\Users\51\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.pdb
 C:\Users\51\Documents\GitHub\Pro3\videojuego\obj\Debug\Videojuego.csprojResolveAssemblyReference.cache
+C:\Users\822\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.exe.config
+C:\Users\822\Documents\GitHub\Pro3\videojuego\obj\Debug\videojuego.exe
+C:\Users\822\Documents\GitHub\Pro3\videojuego\obj\Debug\videojuego.pdb
+C:\Users\822\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.exe
+C:\Users\822\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.pdb
+C:\Users\822\Documents\GitHub\Pro3\videojuego\obj\Debug\Videojuego.csprojResolveAssemblyReference.cache

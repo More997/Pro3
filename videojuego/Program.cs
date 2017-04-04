@@ -28,7 +28,7 @@ namespace Videojuego
             int min = 0;
             int max = 50;
             int cantb = max / 4;
-            int cante = 5;
+            int cante = 2;
             Random random = new Random();
             int x = max / 2;
             int y = max / 2;
@@ -52,10 +52,10 @@ namespace Videojuego
             }
              i = 0;
             while (i != cante)
-            {
-                randomNumber = random.Next(min + 1, max - 1);
+            { 
+                randomNumber = 5 + i;
                 xe[i] = randomNumber;
-                randomNumber = random.Next(min + 1, max - 1);
+                randomNumber = 6 + i; ;
                 ye[i] = randomNumber;
                 enemigos[i] = "A";
                 i++;
@@ -82,17 +82,22 @@ namespace Videojuego
                     Console.WriteLine(bombas[i]);
                     i++;
                 }
-                i = 0;
-                while (i != cante)
-                {
-                    Console.SetCursorPosition(xe[i], ye[i]);
-                    Console.WriteLine(enemigos[i]);
-                    i++;
-                }
+               
+               
+                Console.SetCursorPosition(xe[0], ye[0]);
+                Console.WriteLine(enemigos[0]);
+                Console.SetCursorPosition(xe[1], ye[1]);
+                Console.WriteLine(enemigos[1]);
+                /*Console.SetCursorPosition(xe[2], ye[2]);
+                Console.WriteLine(enemigos[2]);
+                Console.SetCursorPosition(xe[3], ye[3]);
+                Console.WriteLine(enemigos[3]);
+                Console.SetCursorPosition(xe[4], ye[4]);
+                Console.WriteLine(enemigos[4]);*/
                 Console.SetCursorPosition(x, y);
                 if (vivo == true)
                 {
-
+                    
                     if (x == max || y == max || x == min + 1 || y == min + 1)
                     {
                         sepuede = false;
@@ -117,27 +122,30 @@ namespace Videojuego
                         }
                     }
 
-                    tecla = Console.ReadKey().KeyChar.ToString();
-                    if (tecla == "w" && y > min + 1 || tecla == "W" && y > min + 1)
-                    {
-                        y -= 1;
-                    }
-                    if (tecla == "s" && y <= max - 1 || tecla == "S" && y <= max - 1)
-                    {
-                        y += 1;
-                    }
-                    if (tecla == "a" && x > min + 1 || tecla == "A" && x > min + 1)
-                    {
-                        x -= 1;
-                    }
-                    if (tecla == "d" && x <= max - 1 || tecla == "D" && x <= max - 1)
-                    {
-                        x += 1;
-                    }
-                    if (tecla == "x" || tecla == "X")
-                    {
-                        end = true;
-                    }
+                    //if (Console.KeyAvailable)
+                    //{
+                        tecla = Console.ReadKey().KeyChar.ToString();
+                        if (tecla == "w" && y > min + 1 || tecla == "W" && y > min + 1)
+                        {
+                            y -= 1;
+                        }
+                        if (tecla == "s" && y <= max - 1 || tecla == "S" && y <= max - 1)
+                        {
+                            y += 1;
+                        }
+                        if (tecla == "a" && x > min + 1 || tecla == "A" && x > min + 1)
+                        {
+                            x -= 1;
+                        }
+                        if (tecla == "d" && x <= max - 1 || tecla == "D" && x <= max - 1)
+                        {
+                            x += 1;
+                        }
+                        if (tecla == "x" || tecla == "X")
+                        {
+                            end = true;
+                        }
+                    //}
                     i = 0;
                     while (i != cantb|| vivo == false)
                     {
@@ -154,20 +162,20 @@ namespace Videojuego
                         switch (movimiento)
                         {
                             case 0:
-                                if (xe[i] != max)
-                                xe[i] =+ 1;
+                                if (xe[i] < max)
+                                    xe[i] =+ 1;
                                 break;
                             case 1:
-                                if (xe[i] != min)
-                                xe[i] =- 1;
+                                if (xe[i] < min)
+                                    xe[i] =- 1;
                                 break;
                             case 2:
-                                if (ye[i] != max)
-                                ye[i] = +1;
+                                if (ye[i] < max)
+                                    ye[i] = +1;
                                 break;
                             case 3:
-                                if (ye[i] != min)
-                                ye[i] = -1;
+                                if (ye[i] > min)
+                                    ye[i] = -1;
                                 break;
                         }
                         i++;
@@ -183,6 +191,7 @@ namespace Videojuego
                     }
                 }
                 Console.Clear();
+                //System.Threading.Thread.Sleep(500);
                 if (vivo == false)
                 {
                     Console.SetCursorPosition(x, y);
