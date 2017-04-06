@@ -15,7 +15,7 @@ namespace Videojuego
             videojuego.Clases.Juego game = new videojuego.Clases.Juego();
             do
             {
-                Console.WriteLine("Bienvenido al Juego!\n Si quiere jugar toque N\n si quiere salir toque X");
+                Console.WriteLine("\nBienvenido al Juego!\n Si quiere jugar toque N\n si quiere salir toque X");
                 tecla = Console.ReadKey().KeyChar.ToString();
                 if (tecla == "N" || tecla == "n")
                 {
