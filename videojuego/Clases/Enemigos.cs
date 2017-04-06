@@ -14,8 +14,8 @@ namespace videojuego.Clases
         private Random random = new Random();
         public Enemigos()
         {
-            x = random.Next(1, 59);
-            y = random.Next(1, 59);
+            x = random.Next(1, 29);
+            y = random.Next(1, 29);
             enemigo = "A";
         }
         public void Movimiento()
@@ -23,7 +23,7 @@ namespace videojuego.Clases
             switch (random.Next(0, 3))
             {
                 case 0:
-                    if (x <= 59)
+                    if (x <= 29)
                         x = +1;
                     break;
                 case 1:
@@ -31,7 +31,7 @@ namespace videojuego.Clases
                         x = -1;
                     break;
                 case 2:
-                    if (y <= 59)
+                    if (y <= 29)
                         y = +1;
                     break;
                 case 3:
@@ -42,10 +42,18 @@ namespace videojuego.Clases
         }
         public int GetX()
         {
+            if (x >= 30)
+                x = 30;
+            else if (x <= 0)
+                x = 0;
             return x;
         }
         public int GetY()
         {
+            if (y >= 30)
+                y = 30;
+            else if (y <= 0)
+                y = 0;
             return y;
         }
          public string Draw()

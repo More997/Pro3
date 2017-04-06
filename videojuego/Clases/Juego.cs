@@ -17,7 +17,7 @@ namespace videojuego.Clases
         public Juego()
         {
             muerto = false;
-            max = 60;
+            max = 30;
             min = 0;
             cantE = 10;
             cantB = max/2;

@@ -14,8 +14,8 @@ namespace videojuego.Clases
         private Random random = new Random();
         public Bombas()
         {
-            x= random.Next(1, 59);
-            y= random.Next(1, 59);
+            x= random.Next(1, 29);
+            y= random.Next(1, 29);
             bomba = "X";
         }
         public int GetX()
