@@ -10,6 +10,21 @@ namespace Videojuego
     {
         static void Main(string[] args)
         {
+            string tecla = "";
+            bool fin = false;
+            do
+            {
+                Console.WriteLine("Bienvenido al Juego!\n Si quiere jugar toque N\n si quiere salir toque X");
+                tecla = Console.ReadKey().KeyChar.ToString();
+                if (tecla == "N" || tecla == "n")
+                {
+
+                }
+                else if (tecla == "X" || tecla == "x")
+                {
+                    fin = true;
+                }
+            } while (fin == false);
             /* bool end = false;
              bool anima = false;
              bool vivo = true;

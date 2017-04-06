@@ -27,6 +27,13 @@ namespace videojuego.Clases
             anima = false;
             killed = false;
         }
+        public string Animacion()
+        {
+            if (anima == false)
+                return pj1;
+            else
+                return pj2;
+        }
         public void Movimiento(string tecla, int min, int max)
         {
             if (tecla == "w" && y > min + 1 || tecla == "W" && y > min + 1)
@@ -52,7 +59,7 @@ namespace videojuego.Clases
             Console.WriteLine(pjmuerto);
             Console.SetCursorPosition(x, y + 1);
             Console.WriteLine("GAME OVER");
-            return killed;
+            return killed =true;
         }
     }
 }

@@ -8,5 +8,15 @@ namespace videojuego.Clases
 {
     class Bombas
     {
+        private int x;
+        private int y;
+        private string bomba;
+        private Random random = new Random();
+        public Bombas()
+        {
+            x= random.Next(1, 59);
+            y= random.Next(1, 59);
+            bomba = "X";
+        }
     }
 }
