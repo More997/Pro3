@@ -18,11 +18,11 @@ namespace videojuego.Clases
             y= random.Next(1, 59);
             bomba = "X";
         }
-        public int getX()
+        public int GetX()
         {
             return x;
         }
-        public int getY()
+        public int GetY()
         {
             return y;
         }

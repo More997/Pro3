@@ -62,5 +62,13 @@ namespace videojuego.Clases
             Console.WriteLine("GAME OVER");
             return killed =true;
         }
+        public int GetX()
+        {
+            return x;
+        }
+        public int GetY()
+        {
+            return y;
+        }
     }
 }

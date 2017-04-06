@@ -8,7 +8,7 @@ namespace videojuego.Clases
 {
     class Juego
     {
-        private bool muerto = false;
+        private bool muerto;
         private int min;
         private int max;
         private int cantE;
@@ -28,30 +28,62 @@ namespace videojuego.Clases
             Enemigos [] enemigos = new Enemigos[cantE];
             Bombas[] bombas = new Bombas[cantB];
             Personaje pj = new Personaje();
+            for (int i = 0; i < enemigos.Length; i++)
+            {
+                enemigos[i] = new Enemigos();
+            }
+            for (int i = 0; i < bombas.Length; i++)
+                bombas[i] = new Bombas();
             while (muerto == false)
             {
-                
-                for (int i = 0; i > cantB; i++)
+                Console.Clear();
+                for (int i = 0; i < bombas.Length; i++)
                 {
-                    Console.SetCursorPosition(bombas[i].getX(), bombas[i].getY());
+                    Console.SetCursorPosition(bombas[i].GetX(), bombas[i].GetY());
                     Console.WriteLine(bombas[i].Draw());
-                    i++;
+                }
+                for (int i = 0; i < enemigos.Length; i++)
+                {
+                    Console.SetCursorPosition(enemigos[i].GetX(), enemigos[i].GetY());
+                    Console.WriteLine(enemigos[i].Draw());
                 }
                 pj.dibujar();
-                if (Console.KeyAvailable)
-                {
+               // if (Console.KeyAvailable)
+                //{
                     tecla = Console.ReadKey().KeyChar.ToString();
                     pj.Movimiento(tecla, min, max);
                     if (tecla == "x" || tecla == "X")
                     {
                         muerto = true;
                     }
+                //}
+                for (int i = 0; i < enemigos.Length; i++)
+                {
+                    enemigos[i].Movimiento();
+                }
+                for (int i = 0; i < enemigos.Length;i++)
+                {
+                    if (pj.GetX() == enemigos[i].GetX() && pj.GetY() == enemigos[i].GetY())
+                    {
+                       muerto = pj.Muerte();
+                    }
+                }
+                for (int i = 0; i < bombas.Length; i++)
+                {
+                    if (pj.GetX() == bombas[i].GetX() && pj.GetY() == bombas[i].GetY())
+                    {
+                        muerto = pj.Muerte();
+                    }
+                }
+                for (int i = 0; i < enemigos.Length; i++)
+                {
+                    enemigos[i].Movimiento();
                 }
                 Console.Clear();
-                System.Threading.Thread.Sleep(500);
+                //System.Threading.Thread.Sleep(1000);
             }
             
-            return true;
+            return muerto;
         }
     }
 }
