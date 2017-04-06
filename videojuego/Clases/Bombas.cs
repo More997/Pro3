@@ -18,5 +18,17 @@ namespace videojuego.Clases
             y= random.Next(1, 59);
             bomba = "X";
         }
+        public int getX()
+        {
+            return x;
+        }
+        public int getY()
+        {
+            return y;
+        }
+        public string Draw()
+        {
+            return bomba;
+        }
     }
 }

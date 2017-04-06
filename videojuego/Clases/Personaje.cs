@@ -27,12 +27,13 @@ namespace videojuego.Clases
             anima = false;
             killed = false;
         }
-        public string Animacion()
+        public void dibujar()
         {
+            Console.SetCursorPosition(x, y);
             if (anima == false)
-                return pj1;
+                Console.WriteLine(pj1);
             else
-                return pj2;
+                Console.WriteLine(pj2);
         }
         public void Movimiento(string tecla, int min, int max)
         {

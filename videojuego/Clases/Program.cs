@@ -12,19 +12,23 @@ namespace Videojuego
         {
             string tecla = "";
             bool fin = false;
+            videojuego.Clases.Juego game = new videojuego.Clases.Juego();
             do
             {
                 Console.WriteLine("Bienvenido al Juego!\n Si quiere jugar toque N\n si quiere salir toque X");
                 tecla = Console.ReadKey().KeyChar.ToString();
                 if (tecla == "N" || tecla == "n")
                 {
-
+                    fin = game.Start();
                 }
                 else if (tecla == "X" || tecla == "x")
                 {
                     fin = true;
+                    
                 }
             } while (fin == false);
+            Console.WriteLine("Fin del juego");
+            
             /* bool end = false;
              bool anima = false;
              bool vivo = true;
