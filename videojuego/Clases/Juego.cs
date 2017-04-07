@@ -48,7 +48,7 @@ namespace videojuego.Clases
                     Console.WriteLine(enemigos[i].Draw());
                 }
                 pj.dibujar();
-               // if (Console.KeyAvailable)
+                //if (Console.KeyAvailable)
                 //{
                     tecla = Console.ReadKey().KeyChar.ToString();
                     pj.Movimiento(tecla, min, max);
@@ -56,7 +56,8 @@ namespace videojuego.Clases
                     {
                         muerto = true;
                     }
-                //}
+              //  }
+                //System.Threading.Thread.Sleep(500);
                 for (int i = 0; i < enemigos.Length; i++)
                 {
                     enemigos[i].Movimiento();
@@ -80,7 +81,7 @@ namespace videojuego.Clases
                     enemigos[i].Movimiento();
                 }
                 Console.Clear();
-                //System.Threading.Thread.Sleep(1000);
+               
             }
             
             return muerto;

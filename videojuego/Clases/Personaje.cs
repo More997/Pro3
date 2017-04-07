@@ -16,6 +16,7 @@ namespace videojuego.Clases
         private string borde;
         private bool killed;
         private string pjmuerto;
+        private bool toqueb;
         public Personaje()
         {
             x = 30;
@@ -26,14 +27,17 @@ namespace videojuego.Clases
             pjmuerto = "0";
             anima = false;
             killed = false;
+            toqueb = false;
         }
         public void dibujar()
         {
             Console.SetCursorPosition(x, y);
-            if (anima == false)
+            if (anima == false && toqueb == false)
                 Console.WriteLine(pj1);
-            else
+            else if (anima == true && toqueb == false)
                 Console.WriteLine(pj2);
+            else
+                Console.WriteLine(borde);
         }
         public void Movimiento(string tecla, int min, int max)
         {
@@ -53,6 +57,10 @@ namespace videojuego.Clases
             {
                 x += 1;
             }
+            if (x == min+1| y == min+1| x == max || y == max)
+                toqueb = true;
+            else
+                toqueb = false;
         }
         public bool Muerte()
         {
