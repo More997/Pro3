@@ -33,9 +33,16 @@ namespace videojuego.Clases
         {
             Console.SetCursorPosition(x, y);
             if (anima == false && toqueb == false)
+            {
                 Console.WriteLine(pj1);
+                anima = true;
+
+            }
             else if (anima == true && toqueb == false)
+            {
                 Console.WriteLine(pj2);
+                anima = false;
+            }
             else
                 Console.WriteLine(borde);
         }
@@ -57,7 +64,7 @@ namespace videojuego.Clases
             {
                 x += 1;
             }
-            if (x == min+1| y == min+1| x == max || y == max)
+            if (x == min+1|| y == min+1 || x == max || y == max)
                 toqueb = true;
             else
                 toqueb = false;
