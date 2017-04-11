@@ -11,7 +11,6 @@ namespace videojuego.Clases
         private int cantE;
         private int cantB;
         private int puntos;
-        private static Random r = new Random();
         private string tecla;
 
         public Juego()
@@ -61,7 +60,7 @@ namespace videojuego.Clases
                 
                 for (int i = 0; i < enemigos.Length; i++)
                 {
-                    enemigos[i].Movimiento(r.Next(0,3));
+                    enemigos[i].Movimiento();
                 }
                 for (int i = 0; i < enemigos.Length;i++)
                 {
@@ -79,7 +78,7 @@ namespace videojuego.Clases
                 }
                 for (int i = 0; i < enemigos.Length; i++)
                 {
-                    enemigos[i].Movimiento(r.Next(0, 3));
+                    enemigos[i].Movimiento();
                 }
                 System.Threading.Thread.Sleep(500);
                 Console.Clear();

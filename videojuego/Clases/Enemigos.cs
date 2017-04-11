@@ -14,9 +14,9 @@ namespace videojuego.Clases
             y = random.Next(1, 29);
             enemigo = "A";
         }
-        public void Movimiento(int i)
+        public void Movimiento()
         {
-            switch (i)
+            switch (random.Next(0,3))
             {
                 case 0:
                     if (x <= 29)
