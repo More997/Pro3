@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace Videojuego
 {
@@ -10,6 +7,13 @@ namespace Videojuego
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Buscando archivo existente en caso contrario se creara uno");
+            FileStream fs = File.OpenWrite("datosJuego.txt");
+            StreamWriter sw = new StreamWriter(fs);
+            sw.WriteLine("Hola que tal");
+            sw.Close();
+            fs.Close();
+            int highscore=0;
             string tecla = "";
             bool fin = false;
             videojuego.Clases.Juego game = new videojuego.Clases.Juego();

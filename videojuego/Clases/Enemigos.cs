@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace videojuego.Clases
 {
@@ -11,16 +7,16 @@ namespace videojuego.Clases
         private int x;
         private int y;
         private string enemigo;
-        private Random random = new Random();
+        private static Random random = new Random();
         public Enemigos()
         {
             x = random.Next(1, 29);
             y = random.Next(1, 29);
             enemigo = "A";
         }
-        public void Movimiento()
+        public void Movimiento(int i)
         {
-            switch (random.Next(0, 3))
+            switch (i)
             {
                 case 0:
                     if (x <= 29)

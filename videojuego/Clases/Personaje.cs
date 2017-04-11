@@ -17,6 +17,7 @@ namespace videojuego.Clases
         private bool killed;
         private string pjmuerto;
         private bool toqueb;
+
         public Personaje()
         {
             x = 30;
@@ -29,6 +30,7 @@ namespace videojuego.Clases
             killed = false;
             toqueb = false;
         }
+
         public void dibujar()
         {
             Console.SetCursorPosition(x, y);
@@ -46,6 +48,7 @@ namespace videojuego.Clases
             else
                 Console.WriteLine(borde);
         }
+
         public void Movimiento(string tecla, int min, int max)
         {
             if (tecla == "w" && y > min + 1 || tecla == "W" && y > min + 1)
@@ -69,6 +72,7 @@ namespace videojuego.Clases
             else
                 toqueb = false;
         }
+
         public bool Muerte()
         {
             Console.SetCursorPosition(x, y);
@@ -77,10 +81,12 @@ namespace videojuego.Clases
             Console.WriteLine("GAME OVER");
             return killed =true;
         }
+
         public int GetX()
         {
             return x;
         }
+
         public int GetY()
         {
             return y;

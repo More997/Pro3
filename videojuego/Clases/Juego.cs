@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace videojuego.Clases
 {
@@ -13,7 +10,10 @@ namespace videojuego.Clases
         private int max;
         private int cantE;
         private int cantB;
+        private int puntos;
+        private static Random r = new Random();
         private string tecla;
+
         public Juego()
         {
             muerto = false;
@@ -23,6 +23,7 @@ namespace videojuego.Clases
             cantB = max/2;
             tecla = "";
         }
+
         public bool Start()
         {
             Enemigos [] enemigos = new Enemigos[cantE];
@@ -48,19 +49,19 @@ namespace videojuego.Clases
                     Console.WriteLine(enemigos[i].Draw());
                 }
                 pj.dibujar();
-                //if (Console.KeyAvailable)
-                //{
+                if (Console.KeyAvailable)
+                {
                     tecla = Console.ReadKey().KeyChar.ToString();
                     pj.Movimiento(tecla, min, max);
                     if (tecla == "x" || tecla == "X")
                     {
                         muerto = true;
                     }
-              //  }
-                //System.Threading.Thread.Sleep(500);
+                }
+                
                 for (int i = 0; i < enemigos.Length; i++)
                 {
-                    enemigos[i].Movimiento();
+                    enemigos[i].Movimiento(r.Next(0,3));
                 }
                 for (int i = 0; i < enemigos.Length;i++)
                 {
@@ -78,12 +79,12 @@ namespace videojuego.Clases
                 }
                 for (int i = 0; i < enemigos.Length; i++)
                 {
-                    enemigos[i].Movimiento();
+                    enemigos[i].Movimiento(r.Next(0, 3));
                 }
+                System.Threading.Thread.Sleep(500);
                 Console.Clear();
                
             }
-            
             return muerto;
         }
     }
