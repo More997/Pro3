@@ -10,16 +10,28 @@ namespace videojuego.Clases
     {
         private int x;
         private int y;
-        private string bomba;
+        private string icono;
+        private bool agarrado;
         private static Random random = new Random();
 
-        public Bombas()
+        public Bombas(bool _danio)
         {
-            x= random.Next(1, 29);
+            x = random.Next(1, 29);
+            agarrado = false;
             y= random.Next(1, 29);
-            bomba = "X";
-        }
+            if (_danio == true)
+                icono = "X";
+            else
+                icono = "☺";
+           
 
+        }
+        public void setAgarrado(bool agarrar)
+        {
+            agarrado = agarrar;
+            x = 0;
+            y = 0;
+        }
         public int GetX()
         {
             return x;
@@ -32,7 +44,10 @@ namespace videojuego.Clases
 
         public string Draw()
         {
-            return bomba;
+            if (agarrado == false)
+                return icono;
+            else
+                return null;
         }
     }
 }

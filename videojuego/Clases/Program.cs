@@ -23,7 +23,7 @@ namespace Videojuego
                 tecla = Console.ReadKey().KeyChar.ToString();
                 if (tecla == "N" || tecla == "n")
                 {
-                    fin = game.Start();
+                    fin = game.Start(ref highscore);
                 }
                 else if (tecla == "X" || tecla == "x")
                 {

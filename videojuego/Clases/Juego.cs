@@ -23,24 +23,38 @@ namespace videojuego.Clases
             tecla = "";
         }
 
-        public bool Start()
+        public bool Start(ref int highscore)
         {
             Enemigos [] enemigos = new Enemigos[cantE];
             Bombas[] bombas = new Bombas[cantB];
             Personaje pj = new Personaje();
+            Bombas[] monedas = new Bombas[15];
             for (int i = 0; i < enemigos.Length; i++)
             {
                 enemigos[i] = new Enemigos();
             }
             for (int i = 0; i < bombas.Length; i++)
-                bombas[i] = new Bombas();
+                bombas[i] = new Bombas(true);
+            for (int i = 0; i < monedas.Length; i++)
+                monedas[i] = new Bombas(false);
             while (muerto == false)
             {
                 Console.Clear();
+                if (puntos > highscore)
+                    highscore = puntos;
+                Console.SetCursorPosition(max + 10, 4);
+                Console.WriteLine("Puntos: " + puntos);
+                Console.SetCursorPosition(max + 10, 6);
+                Console.WriteLine("High Score: " + highscore);
                 for (int i = 0; i < bombas.Length; i++)
                 {
                     Console.SetCursorPosition(bombas[i].GetX(), bombas[i].GetY());
                     Console.WriteLine(bombas[i].Draw());
+                }
+                for (int i = 0; i < monedas.Length; i++)
+                {
+                    Console.SetCursorPosition(monedas[i].GetX(), monedas[i].GetY());
+                    Console.WriteLine(monedas[i].Draw());
                 }
                 for (int i = 0; i < enemigos.Length; i++)
                 {
@@ -74,6 +88,14 @@ namespace videojuego.Clases
                     if (pj.GetX() == bombas[i].GetX() && pj.GetY() == bombas[i].GetY())
                     {
                         muerto = pj.Muerte();
+                    }
+                }
+                for (int i = 0; i < monedas.Length; i++)
+                {
+                    if (pj.GetX() == monedas[i].GetX() && pj.GetY() == monedas[i].GetY())
+                    {
+                        puntos += 10;
+                        monedas[i].setAgarrado(true);
                     }
                 }
                 for (int i = 0; i < enemigos.Length; i++)

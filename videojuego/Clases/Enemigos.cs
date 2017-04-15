@@ -20,19 +20,19 @@ namespace videojuego.Clases
             {
                 case 0:
                     if (x <= 29)
-                        x = +1;
+                        x += 1;
                     break;
                 case 1:
                     if (x >= 1)
-                        x = -1;
+                        x -=1;
                     break;
                 case 2:
                     if (y <= 29)
-                        y = +1;
+                        y += 1;
                     break;
                 case 3:
                     if (y >= 1)
-                        y = -1;
+                        y -= 1;
                     break;
             }
         }
