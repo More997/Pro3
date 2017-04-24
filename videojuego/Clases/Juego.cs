@@ -23,12 +23,14 @@ namespace videojuego.Clases
             tecla = "";
         }
 
-        public bool Start(ref int highscore)
+        public void Start(ref int highscore, ref bool fin, ref bool newHS)
         {
             Enemigos [] enemigos = new Enemigos[cantE];
             Bombas[] bombas = new Bombas[cantB];
             Personaje pj = new Personaje();
             Bombas[] monedas = new Bombas[15];
+            muerto = false;
+            puntos = 0;
             for (int i = 0; i < enemigos.Length; i++)
             {
                 enemigos[i] = new Enemigos();
@@ -69,6 +71,7 @@ namespace videojuego.Clases
                     if (tecla == "x" || tecla == "X")
                     {
                         muerto = true;
+                        fin = true;
                     }
                 }
                 
@@ -104,9 +107,23 @@ namespace videojuego.Clases
                 }
                 System.Threading.Thread.Sleep(500);
                 Console.Clear();
-               
+               if (muerto == true && fin == false)
+                {
+                    Console.WriteLine("Game Over\n Puntaje:" + puntos);
+                    if (puntos >= highscore)
+                    {
+                        Console.WriteLine("Felicidades! Nuevo Record!");
+                        newHS = true;
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        Console.WriteLine("El High Score es de:" + highscore + " Puntos");
+                        Console.ReadKey();
+                    }
+                    
+                }
             }
-            return muerto;
         }
     }
 }
