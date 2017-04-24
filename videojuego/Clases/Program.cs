@@ -8,16 +8,22 @@ namespace Videojuego
         static void Main(string[] args)
         {
             Console.WriteLine("Buscando archivo existente en caso contrario se creara uno");
-            FileStream fs;
-            if (!File.Exists("datosJuego.txt"))
+            FileStream fs2;
+            StreamWriter sw;
+            StreamReader sr;
+            if (!File.Exists("datosJuegos.txt"))
             {
-               fs = File.Create("datosJuegos.txt");
+                FileStream fs = File.Create("datosJuegos.txt");
+                Console.WriteLine("Ingrese Mensaje de bienvenida");
+                sw = new StreamWriter(fs);
+                sw.WriteLine(Convert.ToString(Console.ReadLine()));
+                sw.Close();
+                fs.Close();
+
             }
-            else
-            {
-               fs = File.OpenWrite("datosJuego.txt");
-            }
-            StreamWriter sw = new StreamWriter(fs);
+                fs2 = File.OpenRead("datosJuegos.txt");
+                sr = new StreamReader(fs2);
+
             Console.WriteLine("Ingrese un Nombre, por favor");
             string name = Console.ReadLine();
             int highscore=0;
@@ -25,10 +31,28 @@ namespace Videojuego
             string nameHS = "";
             bool fin = false;
             bool newHS = false;
+            FileStream HS;
+            FileStream HSname;
+            if (!File.Exists("HS.txt") && !File.Exists("Nombre.txt"))
+            {
+                FileStream HS = File.Create("HS.txt");
+                FileStream HSname = File.Create("Nombre.txt");
+            }
+            else
+            {
+                FileStream HS = File.Create("HS.txt");
+                FileStream HSname = File.Create("Nombre.txt");
+            }
+                BinaryWriter HSw = new StreamWriter(HS);
+                BinaryReader HSr = new StreamReader(HS);
+                StreamWriter Nw = new StreamWriter(HSname);
+                StreamReader Nr = new StreamReader(HSname);
+
+           
             videojuego.Clases.Juego game = new videojuego.Clases.Juego();
             do
             {
-                Console.WriteLine("\nBienvenido al Juego "+ name +"!\n Si quiere jugar toque N\n si quiere salir toque X\n");
+                Console.WriteLine("\n"+ sr.ReadLine() +" "+ name +"!\n Si quiere jugar toque N\n si quiere salir toque X\n");
                 if (highscore != 0)
                 {
                     Console.WriteLine("El High Score es de " + nameHS + " con " + highscore + " puntos ");
@@ -48,14 +72,17 @@ namespace Videojuego
                     
                 }
             } while (fin == false);
+            sr.Close();
+            fs2.Close();
             Console.WriteLine("Fin del juego");
+           /* 
             if (newHS == true)
             {
                 sw.WriteLine(name);
-
             }
-            sw.Close();
-            fs.Close();
+            */
+            
+            
         }
     }
 }

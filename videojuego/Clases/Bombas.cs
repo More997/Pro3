@@ -22,7 +22,7 @@ namespace videojuego.Clases
             if (_danio == true)
                 icono = "X";
             else
-                icono = "☺";
+                icono = "8";
            
 
         }
