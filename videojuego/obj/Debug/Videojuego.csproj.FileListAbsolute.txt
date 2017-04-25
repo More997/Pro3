@@ -22,3 +22,4 @@ C:\Users\Benjamin\Documents\GitHub\Pro3\videojuego\obj\Debug\videojuego.pdb
 C:\Users\Benjamin\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.exe
 C:\Users\Benjamin\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.pdb
 C:\Users\Benjamin\Documents\GitHub\Pro3\videojuego\obj\Debug\Videojuego.csprojResolveAssemblyReference.cache
+C:\Users\822\Desktop\Pro3\videojuego\bin\Debug\Newtonsoft.Json.dll

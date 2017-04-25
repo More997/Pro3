@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Net;
 using System.IO;
+
+using Newtonsoft.Json.Linq;
 
 namespace Videojuego
 {
@@ -31,7 +34,7 @@ namespace Videojuego
             string nameHS = "";
             bool fin = false;
             bool newHS = false;
-            FileStream HS;
+            /*FileStream HS;
             FileStream HSname;
             if (!File.Exists("HS.txt") && !File.Exists("Nombre.txt"))
             {
@@ -48,11 +51,50 @@ namespace Videojuego
                 StreamWriter Nw = new StreamWriter(HSname);
                 StreamReader Nr = new StreamReader(HSname);
 
-           
+           */
+            WebRequest req = WebRequest.Create("https://query.yahooapis.com/v1/public/yql?q=select%20item.condition.text%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22buenos%20aires%2C%20tx%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys");
+
+            WebResponse respuesta = req.GetResponse();
+
+            Stream stream = respuesta.GetResponseStream();
+
+            StreamReader str = new StreamReader(stream);
+            JObject data = JObject.Parse(str.ReadToEnd());
+            string clima;
+            try
+            {
+                
+                clima = (string)data["query"]["results"]["channel"]["item"]["condition"]["text"];
+            }
+            catch (Exception error)
+            {
+                clima = " ";
+            }
+            switch (clima)
+            {
+                case "Sunny":
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    break;
+                case "Cloudy":
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    break;
+                case "Rainy":
+                    Console.BackgroundColor = ConsoleColor.Magenta;
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    break;
+            }
             videojuego.Clases.Juego game = new videojuego.Clases.Juego();
+            Console.WriteLine("\n" + sr.ReadLine() + " " + name+"!");
+            
             do
             {
-                Console.WriteLine("\n"+ sr.ReadLine() +" "+ name +"!\n Si quiere jugar toque N\n si quiere salir toque X\n");
+                Console.WriteLine("Si quiere jugar toque N\n si quiere salir toque X");
                 if (highscore != 0)
                 {
                     Console.WriteLine("El High Score es de " + nameHS + " con " + highscore + " puntos ");
@@ -71,16 +113,17 @@ namespace Videojuego
                     fin = true;
                     
                 }
-            } while (fin == false);
-            sr.Close();
-            fs2.Close();
-            Console.WriteLine("Fin del juego");
-           /* 
+                /* 
             if (newHS == true)
             {
                 sw.WriteLine(name);
             }
-            */
+                 */
+            } while (fin == false);
+            sr.Close();
+            fs2.Close();
+            Console.WriteLine("Fin del juego");
+        
             
             
         }
