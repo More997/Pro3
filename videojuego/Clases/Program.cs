@@ -34,24 +34,24 @@ namespace Videojuego
             string nameHS = "";
             bool fin = false;
             bool newHS = false;
-            /*FileStream HS;
+            FileStream HS;
             FileStream HSname;
             if (!File.Exists("HS.txt") && !File.Exists("Nombre.txt"))
             {
-                FileStream HS = File.Create("HS.txt");
-                FileStream HSname = File.Create("Nombre.txt");
+                HS = File.Create("HS.txt");
+                HSname = File.Create("Nombre.txt");
             }
             else
             {
-                FileStream HS = File.Create("HS.txt");
-                FileStream HSname = File.Create("Nombre.txt");
+                HS = File.Create("HS.txt");
+                HSname = File.Create("Nombre.txt");
             }
-                BinaryWriter HSw = new StreamWriter(HS);
-                BinaryReader HSr = new StreamReader(HS);
+               // BinaryWriter HSw = new StreamWriter(HS);
+               //BinaryReader HSr = new StreamReader(HS);
                 StreamWriter Nw = new StreamWriter(HSname);
                 StreamReader Nr = new StreamReader(HSname);
 
-           */
+           
             WebRequest req = WebRequest.Create("https://query.yahooapis.com/v1/public/yql?q=select%20item.condition.text%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22buenos%20aires%2C%20tx%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys");
 
             WebResponse respuesta = req.GetResponse();
@@ -113,12 +113,12 @@ namespace Videojuego
                     fin = true;
                     
                 }
-                /* 
+                
             if (newHS == true)
             {
-                sw.WriteLine(name);
+                Nw.WriteLine(Convert.ToString(name));
             }
-                 */
+                 
             } while (fin == false);
             sr.Close();
             fs2.Close();
