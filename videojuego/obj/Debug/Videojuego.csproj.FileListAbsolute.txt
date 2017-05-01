@@ -5,3 +5,10 @@ C:\Users\822\Desktop\Pro3\videojuego\bin\Debug\Newtonsoft.Json.dll
 C:\Users\822\Desktop\Pro3\videojuego\obj\Debug\Videojuego.csprojResolveAssemblyReference.cache
 C:\Users\822\Desktop\Pro3\videojuego\obj\Debug\videojuego.exe
 C:\Users\822\Desktop\Pro3\videojuego\obj\Debug\videojuego.pdb
+C:\Users\def\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.exe.config
+C:\Users\def\Documents\GitHub\Pro3\videojuego\obj\Debug\videojuego.exe
+C:\Users\def\Documents\GitHub\Pro3\videojuego\obj\Debug\videojuego.pdb
+C:\Users\def\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.exe
+C:\Users\def\Documents\GitHub\Pro3\videojuego\bin\Debug\videojuego.pdb
+C:\Users\def\Documents\GitHub\Pro3\videojuego\bin\Debug\Newtonsoft.Json.dll
+C:\Users\def\Documents\GitHub\Pro3\videojuego\obj\Debug\Videojuego.csprojResolveAssemblyReference.cache
