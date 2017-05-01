@@ -1,8 +1,16 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 
 namespace videojuego.Clases
 {
+    [Serializable]
+    struct Position
+    {
+        public int x;
+        public int y;
+    }
     class Juego
     {
         private bool muerto;
@@ -19,13 +27,16 @@ namespace videojuego.Clases
             max = 30;
             min = 0;
             cantE = 10;
-            cantB = max/2;
+            cantB = max / 2;
             tecla = "";
         }
 
         public void Start(ref int highscore, ref bool fin, ref bool newHS)
         {
-            Enemigos [] enemigos = new Enemigos[cantE];
+            Position pos;
+            BinaryFormatter BF = new BinaryFormatter();
+            FileStream PJPos;
+            Enemigos[] enemigos = new Enemigos[cantE];
             Bombas[] bombas = new Bombas[cantB];
             Personaje pj = new Personaje();
             Bombas[] monedas = new Bombas[15];
@@ -39,6 +50,20 @@ namespace videojuego.Clases
                 bombas[i] = new Bombas(true);
             for (int i = 0; i < monedas.Length; i++)
                 monedas[i] = new Bombas(false);
+            if (!File.Exists("PJpos.txt"))
+            {
+                PJPos = File.Create("PJpos.txt");
+                pos.x = pj.GetX();
+                pos.y = pj.GetY();
+            }
+            else
+            {
+                using (PJPos = File.OpenRead("PJpos.txt"))
+                {
+                    pos = (Position)BF.Deserialize(PJPos);
+                }
+            }
+            PJPos.Close();
             while (muerto == false)
             {
                 Console.Clear();
@@ -74,16 +99,16 @@ namespace videojuego.Clases
                         fin = true;
                     }
                 }
-                
+
                 for (int i = 0; i < enemigos.Length; i++)
                 {
                     enemigos[i].Movimiento();
                 }
-                for (int i = 0; i < enemigos.Length;i++)
+                for (int i = 0; i < enemigos.Length; i++)
                 {
                     if (pj.GetX() == enemigos[i].GetX() && pj.GetY() == enemigos[i].GetY())
                     {
-                       muerto = pj.Muerte();
+                        muerto = pj.Muerte();
                     }
                 }
                 for (int i = 0; i < bombas.Length; i++)
@@ -107,7 +132,7 @@ namespace videojuego.Clases
                 }
                 System.Threading.Thread.Sleep(500);
                 Console.Clear();
-               if (muerto == true && fin == false)
+                if (muerto == true && fin == false)
                 {
                     Console.WriteLine("Game Over\n Puntaje:" + puntos);
                     if (puntos >= highscore)
@@ -121,9 +146,17 @@ namespace videojuego.Clases
                         Console.WriteLine("El High Score es de:" + highscore + " Puntos");
                         Console.ReadKey();
                     }
-                    
+
                 }
             }
+
+            pos.x = pj.GetX();
+            pos.y = pj.GetY();
+            using (PJPos = File.OpenWrite("PlayerPosData.txt"))
+            {
+                BF.Serialize(PJPos, pos);
+            }
+            PJPos.Close();
         }
     }
 }

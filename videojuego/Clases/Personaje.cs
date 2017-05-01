@@ -91,5 +91,13 @@ namespace videojuego.Clases
         {
             return y;
         }
+        public void SetX(int _x)
+        {
+            x = _x;
+        }
+        public void setY(int _y)
+        {
+            y = _y;
+        }
     }
 }
