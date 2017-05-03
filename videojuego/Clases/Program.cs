@@ -114,13 +114,18 @@ namespace Videojuego
                     fin = true;
                     
                 }
-                
-            if (newHS == true)
-            {
+
+                if (newHS == true)
+                {
                     nameHS = name;
                     BWHS.Write(highscore);
-                    BWHS.Write(name);                 
-            }
+                    BWHS.Write(name);
+                }
+                else if (highscore == 0)
+                {
+                    BWHS.Write(highscore);
+                    BWHS.Write("");
+                }
             } while (fin == false);
             sr.Close();
             fs2.Close();

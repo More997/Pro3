@@ -61,6 +61,8 @@ namespace videojuego.Clases
                 using (PJPos = File.OpenRead("PJpos.txt"))
                 {
                     pos = (Position)BF.Deserialize(PJPos);
+                    pj.SetX(pos.x);
+                    pj.setY(pos.y);
                 }
             }
             PJPos.Close();
@@ -152,7 +154,7 @@ namespace videojuego.Clases
 
             pos.x = pj.GetX();
             pos.y = pj.GetY();
-            using (PJPos = File.OpenWrite("PlayerPosData.txt"))
+            using (PJPos = File.OpenWrite("PJpos.txt"))
             {
                 BF.Serialize(PJPos, pos);
             }
